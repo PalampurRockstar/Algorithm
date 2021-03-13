@@ -1,1 +1,1 @@
-# Learn Algorithm
+# Learn algorithm
