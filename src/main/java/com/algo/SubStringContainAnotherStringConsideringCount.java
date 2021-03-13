@@ -1,6 +1,6 @@
 package com.algo;
 
-public class SubStringContainChar {
+public class SubStringContainAnotherStringConsideringCount {
 	public static void main(String[] args) {
 		String str = "this ttis a test string";
 		String pattern = "tist";
