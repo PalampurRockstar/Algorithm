@@ -1,46 +1,29 @@
 package com.algo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LargestUniqueWindow {
 
-	public static void main(String[] args) {
-		int foundCharacterIndex[] = new int[256];
-		String str = "this is a testwindow";
-		for (int i = 0; i < str.length(); ++i) {
-			System.out.print(str.charAt(i) + "  ");
-		}
-		System.out.println();
-		for (int i = 0; i < str.length(); ++i) {
-			System.out.print(i + "  ");
-		}
-		System.out.println();
-		findLargestUniqueWindow(str);
-	}
+    public static void main(String[] args) {
+        int result = longestUniqueSubString("abbcdafeegh");
+        System.out.println("result : " + result);
+    }
 
-	private static void findLargestUniqueWindow(String str) {
-		int foundCharacterIndex[] = new int[256];
-
-		str = " " + str.toLowerCase();
-		int max = Integer.MIN_VALUE, maxStart = -1, maxEnd = -1;
-
-		int start = 0, end = 0;
-		for (int i = 0; i < str.length(); ++i) {
-			char c = str.charAt(i);
-			if (foundCharacterIndex[((int) c)] == 0) {
-				foundCharacterIndex[((int) c)] = i;
-				start = i;
-			} else {
-
-				end = foundCharacterIndex[((int) c)] + 1;
-			}
-			if (max < (start - end)) {
-				max = start - end;
-				maxStart = start;
-				maxEnd = end;
-			}
-		}
-		maxEnd--;
-		maxStart--;
-		System.out.println("max : " + max);
-		System.out.println(maxEnd + " : " + maxStart);
-	}
+    static int longestUniqueSubString(String list) {
+        Map<Character, Integer> visited = new HashMap<>();
+        int back = 0;
+        int max = 0;
+        for (int front = 0; front < list.length(); ++front) {
+            if (visited.containsKey(list.charAt(front))) {
+                back = visited.get(list.charAt(front)) + 1;
+            }
+            visited.put(list.charAt(front), front);
+            if (max < (front - back)) {
+                max = front - back;
+                System.out.println(list.substring(back, front + 1));
+            }
+        }
+        return max;
+    }
 }

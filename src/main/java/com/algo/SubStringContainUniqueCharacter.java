@@ -49,8 +49,8 @@ public class SubStringContainUniqueCharacter {
     }
 
     private static void shrinkIfPossible() {
-        while (toFindMap.get(list.charAt(backIndex)) == null || toFindMap.get(list.charAt(backIndex)) != 1) {
-            if (toFindMap.get(list.charAt(backIndex)) != null)
+        while (!toFindMap.containsKey(list.charAt(backIndex)) || toFindMap.get(list.charAt(backIndex)) != 1) {
+            if (toFindMap.containsKey(list.charAt(backIndex)))
                 toFindMap.put(list.charAt(backIndex), toFindMap.get(list.charAt(backIndex)) - 1);
             backIndex++;
         }

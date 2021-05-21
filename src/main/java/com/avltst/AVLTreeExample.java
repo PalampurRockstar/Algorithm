@@ -5,7 +5,6 @@ class Node {
 		this.data = data;
 		height = 1;
 	}
-
 	Node right;
 	Node left;
 	int data;
