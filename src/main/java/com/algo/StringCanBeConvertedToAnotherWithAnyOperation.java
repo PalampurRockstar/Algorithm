@@ -1,7 +1,7 @@
 package com.algo;
 
-import javax.imageio.stream.ImageInputStream;
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class StringCanBeConvertedToAnotherWithAnyOperation {
     static boolean check(String s1, String s2) {
@@ -10,7 +10,6 @@ public class StringCanBeConvertedToAnotherWithAnyOperation {
         System.out.println(s1 + " : " + n);
         System.out.println(s2 + " : " + m);
 
-//        Set<String> set = new HashSet<>();
         Set<String> set = new LinkedHashSet<>();
         set.add(0 + ":" + 0);
 
