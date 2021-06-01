@@ -1,12 +1,9 @@
 package com.algo;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class SearchDuplicateCharacter {
-
     public static void main(String[] args) {
         String name = "sourabhRaghav";
         Map<Character, Boolean> exist = new HashMap<>();
@@ -17,6 +14,5 @@ public class SearchDuplicateCharacter {
             } else
                 exist.put(name.charAt(i), true);
         }
-
     }
 }
