@@ -17,8 +17,6 @@ public class MatrixMultiply {
         printMatrix(matrix2);
         System.out.println("-----");
         printMatrix(out);
-
-
     }
 
     static void printMatrix(int matrix[][]) {

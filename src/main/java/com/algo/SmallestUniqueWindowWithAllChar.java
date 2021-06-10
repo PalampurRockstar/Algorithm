@@ -25,24 +25,21 @@ public class SmallestUniqueWindowWithAllChar {
 			}
 		}
 		
-		return findSubStringTest(input, charCount, countUnique);
+		return findSubSet(input, charCount, countUnique);
 	}
 
-	private static String findSubStringTest(String input, int[] charCount, int countUnique) {
+	private static String findSubSet(String input, int[] charCount, int countUnique) {
 		int[] startCharCount = charCount;
 		int index = 0;
 		boolean found = false;
 		boolean left = true;
 		int start = 0,end = 0;
-		
 		while (!found) {
-			
 			char each= input.charAt(index);
 			if (left) 
 				index++;
 			 else 
 				index--;
-			
 			if (startCharCount[each] > 1) {
 				startCharCount[each]--;
 			} else {

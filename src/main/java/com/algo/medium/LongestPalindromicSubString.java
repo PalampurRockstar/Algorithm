@@ -1,12 +1,14 @@
-package com.algo;
+package com.algo.medium;
 
-public class LongestPalindromicString {
+public class LongestPalindromicSubString {
     public static void main(String[] args) {
         String input = "abaxabaxabb";
-        String arrayResult = topDownWithArray(input);
+        final var arrayResult = topDownWithArray(input);
         System.out.println(arrayResult);
-        String recursiveSolution = topDownFindRecursively(input);
+        final var recursiveSolution = topDownFindRecursively(input);
         System.out.println(recursiveSolution);
+        final var forLoop = topDownWithForLoop(input);
+        System.out.println(forLoop);
     }
 
     static String topDownFindRecursively(String input) {
@@ -22,6 +24,28 @@ public class LongestPalindromicString {
         return max;
     }
 
+    private static String topDownWithForLoop(String input) {
+        int maxLen = 0;
+        int backIndex = 0;
+        for (int i = 1; i < input.length(); ++i) {
+            for (int back = i - 1, front = i; back >= 0 && front < input.length() && input.charAt(back) == input.charAt(front); ++front, --back) {
+                int diff = front - back + 1;
+                if (diff > maxLen) {
+                    backIndex = back;
+                    maxLen = diff;
+                }
+            }
+            for (int back = i - 1, front = i + 1; back >= 0 && front < input.length() && input.charAt(back) == input.charAt(front); ++front, --back) {
+                int diff = front - back + 1;
+                if (diff > maxLen) {
+                    backIndex = back;
+                    maxLen = diff;
+                }
+            }
+        }
+        return maxLen != 0 ? input.substring(backIndex, backIndex + maxLen) : null;
+    }
+
     private static String checkRightLeft(String input, int start, int end) {
         if (start >= 0 && end < input.length() && input.charAt(start) == input.charAt(end)) {
             String result = checkRightLeft(input, start - 1, end + 1);
@@ -32,7 +56,6 @@ public class LongestPalindromicString {
         } else
             return null;
     }
-
 
     private static String topDownWithArray(String input) {
         int len = input.length();
