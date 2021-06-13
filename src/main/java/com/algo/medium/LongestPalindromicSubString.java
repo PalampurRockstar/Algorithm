@@ -2,13 +2,50 @@ package com.algo.medium;
 
 public class LongestPalindromicSubString {
     public static void main(String[] args) {
-        String input = "abaxabaxabb";
+        String input = "abacabacabb";
         final var arrayResult = topDownWithArray(input);
         System.out.println(arrayResult);
         final var recursiveSolution = topDownFindRecursively(input);
         System.out.println(recursiveSolution);
         final var forLoop = topDownWithForLoop(input);
         System.out.println(forLoop);
+        final var manacherAlgoResult = topDownWithManacherAlgo(input);
+        System.out.println(manacherAlgoResult);
+    }
+
+    private static String topDownWithManacherAlgo(String input) {
+        int newLen = ((input.length() * 2) + 1);
+        char newString[] = new char[newLen];
+        newString[0] = '#';
+        newString[newLen - 1] = '#';
+        for (int i = 0; i < input.length(); ++i) {
+            newString[(i * 2)] = '#';
+            newString[(i * 2) + 1] = input.charAt(i);
+        }
+        int PC[] = new int[newLen];
+        int longestPalindrome = 0;
+        int lpCenter = 0;
+        int startAt = 0;
+        for (int i = 1; i < newLen; ++i) {
+            int rightFromCenter = PC[lpCenter] + lpCenter;
+            int mirorIndex = (2 * PC[lpCenter]) - i;
+            if (mirorIndex >= 0)
+                if (PC[mirorIndex] < (i - rightFromCenter))
+                    PC[i] = -1;
+                else
+                    PC[i] = PC[mirorIndex];
+
+            if (PC[i] >= 0)
+                for (int front = i + PC[i] + 1, back = i - PC[i] - 1; back >= 0 && front < newLen && newString[front] == newString[back]; front++, back--)
+                    PC[i]++;
+            if (longestPalindrome < PC[i]) {
+                longestPalindrome = PC[i];
+                lpCenter = i;
+                startAt = i - longestPalindrome;
+            }
+        }
+        return longestPalindrome > 0 ? new String(newString).substring(startAt, startAt + (2 * longestPalindrome)).replaceAll("#", "") : null;
+
     }
 
     static String topDownFindRecursively(String input) {
