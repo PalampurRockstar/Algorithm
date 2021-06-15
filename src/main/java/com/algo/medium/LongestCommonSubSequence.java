@@ -15,11 +15,34 @@ public class LongestCommonSubSequence {
         String resultOptimal = findByAggressiveSolutionOptimalMost(input1, input2);
         System.out.println("resultOptimal : " + resultOptimal);
 
-        String resultTabulation = findByTabulation(input1, input2);
-        System.out.println("resultTabulation : " + resultTabulation);
+        String resultTabulationMaxToZero = findByTabulationStartFromMaxToZero(input1, input2);
+        System.out.println("resultTabulationMaxToZero : " + resultTabulationMaxToZero);
+
+        String resultTabulationZeroToMax = findByTabulationStartFromZeroToMax(input1, input2);
+        System.out.println("resultTabulationZeroToMax : " + resultTabulationZeroToMax);
     }
 
-    static String findByTabulation(String input1, String input2) {
+    private static String findByTabulationStartFromZeroToMax(String input1, String input2) {
+
+        int mat[][] = new int[input1.length() + 1][input2.length() + 1];
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < mat.length; ++i) {
+            for (int j = 0; j < mat[0].length; ++j) {
+                if (i == 0 || j == 0) {
+                    mat[i][j] = 0;
+                } else if (input1.charAt(i - 1) == input2.charAt(j - 1)) {
+                    mat[i][j] = mat[i - 1][j - 1] + 1;
+                    result.append(input1.charAt(i - 1));
+                } else {
+                    mat[i][j] = Integer.max(mat[i - 1][j], mat[i][j - 1]);
+                }
+            }
+        }
+        System.out.println(mat[mat.length - 1][mat[0].length - 1]);
+        return result.toString();
+    }
+
+    static String findByTabulationStartFromMaxToZero(String input1, String input2) {
         int len1 = input1.length();
         int len2 = input2.length();
         int mat[][] = new int[len1 + 1][len2 + 1];
