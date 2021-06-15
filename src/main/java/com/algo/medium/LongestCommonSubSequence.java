@@ -62,7 +62,7 @@ public class LongestCommonSubSequence {
         System.out.println("Len : " + mat[0][0]);
         return result.reverse().toString();
     }
-
+    //will not work for multiple LCS, for learning different approach
     private static String findByAggressiveSolutionOptimalMost(String input1, String input2) {
         StringBuilder result = new StringBuilder();
         int i = 0, j = 0;
