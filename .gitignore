@@ -4,3 +4,4 @@ target/
 src/main/java/com/demo/
 src/main/java/com/practice/
 *.iml
+venv/
