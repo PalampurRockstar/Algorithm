@@ -15,7 +15,7 @@ def findByTabulation(input):
         max = 0
         maxIndex = 0
         for j in range(0, i + 1):
-            if input[i] >= input[j]:
+            if input[i] > input[j]:
                 if len(T[j]) > max:
                     max = len(T[j])
                     maxIndex = j
@@ -29,6 +29,7 @@ def findByTabulation(input):
             totalMax = len(T[i])
             totalMaxList = T[i]
     return totalMaxList
+
 
 # brute force
 def findByRec(start, end, qb):
@@ -97,11 +98,15 @@ def ceilIndex(T, n):
     else:
         return -1
 
-# input = [-1, 3, 4, 5, 2]
-# input = [2, 5, 1, 8, 3]
-# input = [3, 4, -1, 0, 6, 2, 3]
-# input = [3, 4, -1, 5, 8, 2, 3, 12, 7, 9, 10]
+
+input = [-1, 3, 4, 5, 2]
+input = [2, 5, 1, 8, 3]
+input = [3, 4, -1, 0, 6, 2, 3]
+input = [3, 4, -1, 5, 8, 2, 3, 12, 7, 9, 10]
 input = [10, 22, 9, 33, 21, 50, 41, 60, 80, 3]
+input = [1, 3, 5, 4, 7]
+input = [10, 9, 2, 5, 3, 7, 101, 18]
+input = [0, 1, 0, 3, 2, 3]
 
 print("Result : " + str(findByRec([], input, dict())))
 print("Result : " + str(findByTabulation(input)))

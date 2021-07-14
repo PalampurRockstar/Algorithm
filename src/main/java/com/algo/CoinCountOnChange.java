@@ -40,6 +40,8 @@ public class CoinCountOnChange {
         CoinCountOnChange cc = new CoinCountOnChange();
         int total = 15;
         int coins[] = {3, 4, 6, 7, 9};
+        int total = 3;
+        int coins[] = {2};
         System.out.println(cc.countWithSingleArray(total, coins));
         System.out.println(cc.countWithMatrix(total, coins));
     }

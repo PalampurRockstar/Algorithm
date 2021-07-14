@@ -4,4 +4,4 @@ def findByRec(start, end):
     for i in range(len(end)):
         findByRec(start + end[i], end[0:i] + end[i + 1:])
 
-findByRec("", "ABCD")
+findByRec("", "22")
