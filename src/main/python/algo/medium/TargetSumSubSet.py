@@ -7,17 +7,15 @@ def findByRecIndexedWrap(input, target):
 
 
 def findByRec(input, target):
-    if target == 0:
-        return 1
-    elif len(input) == 0 or target < 0:
-        return -sys.maxsize
-    else:
-        excluding = findByRec(input[1:], target)
-        if target >= input[0]:
-            including = findByRec(input[1:], target - input[0])
-            return max(including + excluding, max(including, excluding))
+    if target == 0:return 1
+    if len(input) == 0 or target < 0:return -sys.maxsize
 
-        return excluding
+    excluding = findByRec(input[1:], target)
+    if target >= input[0]:
+        including = findByRec(input[1:], target - input[0])
+        return max(including + excluding, max(including, excluding))
+
+    return excluding
 
 
 def findByRecIndexed(input, index, target, found, resultList):
@@ -54,16 +52,16 @@ target = 10
 input = [1, 2, 3, 4, 5]
 target = 10
 input = [2, 3, 5, 6, 8, 10]
-target = 5
-input = [1, 2, 3, 4, 0]
-target = 7
-input = [2, 5, 6, 7]
-
-target = 3
-input = [2]
-
-target = 0
-input = [1]
+# target = 5
+# input = [1, 2, 3, 4, 0]
+# target = 7
+# input = [2, 5, 6, 7]
+#
+# target = 3
+# input = [2]
+#
+# target = 0
+# input = [1]
 
 #Not tested with leet code test cases.
 print(findByRec(input, target))

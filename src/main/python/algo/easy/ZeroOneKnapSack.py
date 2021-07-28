@@ -1,3 +1,6 @@
+import sys
+
+
 def findByRec(input, target):
     if len(input) == 0 or target == 0: return 0
     excluding = findByRec(input[1:], target)
@@ -6,6 +9,12 @@ def findByRec(input, target):
         return max(including, excluding)
     else:
         return excluding
+
+
+def findByRec2(input, target):
+    if target == 0: return 0
+    if len(input) == 0 or target < 0: return -sys.maxsize
+    return max(findByRec2(input[1:], target),findByRec2(input[1:], target - input[0][0]) + input[0][1])
 
 
 def findByTabulation(input, target):
@@ -39,4 +48,5 @@ input = [
     [4, 30]
 ]
 print(findByRec(input, 7))
+print(findByRec2(input, 7))
 print(findByTabulation(input, 7))
