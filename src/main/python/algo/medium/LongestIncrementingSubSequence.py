@@ -1,8 +1,5 @@
 def maxSizeList(a, b):
-    if len(a) < len(b):
-        return b
-    else:
-        return a
+    return b if len(a) < len(b) else a
 
 
 def findByTabulation(input):
@@ -31,24 +28,21 @@ def findByTabulation(input):
     return totalMaxList
 
 
-# brute force
+# backtracking
 def findByRec(start, end, qb):
-    key = ":".join(str(x) for x in start + end)
-    if key in qb: return qb[key]
+    if len(end) == 0: return start
     if len(start) == 0: return findByRec([end[0]], end[1:], qb)
 
-    if len(end) == 1:
-        qb[key] = start + [end[0]] if end[0] > start[len(start) - 1] else start
-        return qb[key]
+    key = ":".join(str(x) for x in start + end)
+    if key in qb: return qb[key]
 
+    exclude = findByRec(start, end[1:], qb)
+    if end[0] > start[- 1]:
+        qb[key] = maxSizeList(exclude, findByRec(start + [end[0]], end[1:], qb))
+        return qb[key]
     else:
-        maxLen = findByRec(start, end[1:], qb)
-        if end[0] > start[len(start) - 1]:
-            qb[key] = maxSizeList(maxLen, findByRec(start + [end[0]], end[1:], qb))
-            return qb[key]
-        else:
-            qb[key] = maxSizeList(maxLen, findByRec([end[0]], end[1:], qb))
-            return qb[key]
+        qb[key] = maxSizeList(exclude, findByRec([end[0]], end[1:], qb))
+        return qb[key]
 
 
 import sys
