@@ -2,19 +2,14 @@ import collections
 import sys
 
 
-def find(arr, k):
-    length = len(arr)
-    if length == 0: return 0
-    acc = [0]
-    for v in arr:
-        acc.append(acc[-1] + v)
-    Q = collections.deque([])
-    res = sys.maxsize
+def find(arr, K, res=sys.maxsize, Q=collections.deque([]), acc=[0]):
+    if len(arr) == 0: return 0
+    for v in arr: acc.append(acc[-1] + v)
     for i, v in enumerate(acc):
-        while Q and v - acc[Q[0]] >= k: res = min(res, i - Q.popleft())
         while Q and acc[Q[-1]] >= v: Q.pop()
+        while Q and v - acc[Q[0]] >= K: res = min(res, i - Q.popleft())
         Q.append(i)
-    return res
+    return res if res != sys.maxsize else 0
 
 
 k = 3

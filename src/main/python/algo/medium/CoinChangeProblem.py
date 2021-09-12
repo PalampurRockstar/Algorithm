@@ -47,11 +47,11 @@ def findByRecMemorizationWrap(coins, amount):
 target = 15
 coins = [3, 4, 6, 7, 9]
 
-target = 9
-coins = [3, 34, 4, 12, 5, 2]
+# target = 9
+# coins = [3, 34, 4, 12, 5, 2]
 
-target=0
-coins = [2]
+# target=0
+# coins = [2]
 
 
 print(findByRecMemorizationWrap(coins, target))

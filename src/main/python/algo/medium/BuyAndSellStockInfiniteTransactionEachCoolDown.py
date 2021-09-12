@@ -1,5 +1,5 @@
 def find(input):
-    if len(input) < 2: return 0
+    if len(input) == 0: return 0
     bA = -input[0]
     sA = 0
     cA = 0

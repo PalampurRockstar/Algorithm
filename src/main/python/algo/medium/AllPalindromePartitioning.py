@@ -48,5 +48,6 @@ def partition(arr, found=[], result=[]):
 
 arr = 'abccbc'
 arr = 'aab'
+arr = 'abccbc'
 print(findWrap(arr))
 print(partition(arr))

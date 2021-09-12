@@ -16,7 +16,6 @@ def findByTabulation(input):
                 if len(T[j]) > max:
                     max = len(T[j])
                     maxIndex = j
-
         if max != 0:
             T[i] = T[maxIndex] + [input[i]]
         else:
@@ -26,6 +25,18 @@ def findByTabulation(input):
             totalMax = len(T[i])
             totalMaxList = T[i]
     return totalMaxList
+
+
+def findByArray(input):
+    length = len(input)
+    T = [1 for i in input]
+    for i in range(1, length):
+        MAX = 0
+        for j in range(0, i + 1):
+            if input[i] > input[j]:
+                MAX = max(MAX, T[j])
+        T[i] += MAX
+    return T[-1]
 
 
 # backtracking
@@ -105,3 +116,4 @@ input = [0, 1, 0, 3, 2, 3]
 print("Result : " + str(findByRec([], input, dict())))
 print("Result : " + str(findByTabulation(input)))
 print("Result : " + str(findByTabulationOptimal(input)))
+print("Result : " + str(findByArray(input)))

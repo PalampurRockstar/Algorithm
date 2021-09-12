@@ -1,33 +1,11 @@
 import sys
 
 
-# my solution didn't work for all test cases
-# def find(input, fee):
-#     if len(input) == 1: return 0
-#     tm = 0
-#     cm = -sys.maxsize
-#     left = 0
-#     right = 1
-#     while left <= right < len(input):
-#         diff = input[right] - input[left]
-#         cm = max(cm, diff)
-#         if cm - fee >= 0:
-#             if right == len(input) - 1:
-#                 tm = cm - fee + tm
-#             elif (cm - diff) > fee:
-#                 tm = cm - fee + tm
-#                 cm = 0
-#                 left = right
-#         else:
-#             left = right
-#         right += 1
-#     return tm
-
 # leet code test
-def find(input, fee):
-    bA = -input[0]
-    sA = 0
-    for i in input[1:]:
+def find(arr, fee, sA=0):
+    if len(arr) == 0: return 0
+    bA = -arr[0]
+    for i in arr[1:]:
         nBA = max(bA, sA - i)
         nSA = max(sA, bA + i - fee)
         bA = nBA

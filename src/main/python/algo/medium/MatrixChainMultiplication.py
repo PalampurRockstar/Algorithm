@@ -2,6 +2,7 @@ import sys
 
 
 def bottom_up(arr):
+
     new_arr = [[arr[i], arr[i + 1]] for i in range(len(arr) - 1)]
     new_l = len(new_arr)
     dp = [[0 for _ in range(new_l)] for _ in range(new_l)]
