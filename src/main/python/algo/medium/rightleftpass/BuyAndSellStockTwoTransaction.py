@@ -17,9 +17,9 @@ def find(arr, ltr=[], ttm=-sys.maxsize, min_c=sys.maxsize, max_c=-sys.maxsize, m
 
 
 input = [7, 1, 5, 3, 6, 4]
-input = [30, 40, 43, 50, 45, 20, 26, 40, 80, 50, 30, 15, 10, 20, 40, 45, 71, 50, 55]
 input = [3, 3, 5, 0, 0, 3, 1, 4]
 input = [1, 2, 3, 4, 5]
 input = [7, 6, 4, 3, 1]
 input = [1, 2]
+input = [30, 40, 43, 50, 45, 20, 26, 40, 80, 50, 30, 15, 10, 20, 40, 45, 71, 50, 55]
 print(find(input))

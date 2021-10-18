@@ -11,15 +11,12 @@ def find(input, k):
 
     left = 0
     for right in range(1, length):
-        if cm < k:
-            cm += input[right]
+        if cm < k:cm += input[right]
 
         while k <= cm - input[left]:
             cm -= input[left]
             left += 1
-        if cm >= k:
-            print(input[left:right + 1])
-            result = min(right - left + 1, result)
+        if cm >= k:result = min(right - left + 1, result)
 
     return result if result != sys.maxsize else 0
 

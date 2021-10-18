@@ -1,3 +1,6 @@
 .idea/
 venv/
 src/main/python/algo/practice
+src/*__init__.py
+src/main/__init__.py
+*__init__.py
