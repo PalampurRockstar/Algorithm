@@ -35,6 +35,7 @@ def findBySingleArray(coins, amount):
     for i in coins:
         for j in range(i, len(T)):
             T[j] = min(T[j - i] + 1, T[j])
+        print(T)
 
     return T[amount] if T[amount] != sys.maxsize else -1
 
@@ -54,7 +55,7 @@ coins = [3, 4, 6, 7, 9]
 # coins = [2]
 
 
-print(findByRecMemorizationWrap(coins, target))
-print(findByTabulation(coins, target))
+# print(findByRecMemorizationWrap(coins, target))
+# print(findByTabulation(coins, target))
 print(findBySingleArray(coins, target))
 
