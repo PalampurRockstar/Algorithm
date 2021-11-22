@@ -28,6 +28,7 @@ def wordBreak(s, wordDict):
                     dp[j + 1] = True
     return dp[-1]
 
+
 str = "applepenapple"
 words = set({"apple", "pen"})
 print(find(str, words, 0, dict()))

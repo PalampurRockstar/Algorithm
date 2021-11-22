@@ -40,8 +40,7 @@ def top_down_1(arr, left, right, qb):
 
 
 def top_down_2(arr, i, j):
-    if i == j:
-        return 0
+    if i == j:return 0
     M = sys.maxsize
     for k in range(i, j):
         M = min(M, top_down_2(arr, i, k) + top_down_2(arr, k + 1, j) + arr[i - 1] * arr[k] * arr[j])

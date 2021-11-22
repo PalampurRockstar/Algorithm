@@ -1,17 +1,20 @@
 import sys
 
 
-def find(arr, fee, sa=0):
-    if len(arr) == 0: return 0
+def solve(arr, fee):
     ba = -arr[0]
-    for v in arr[1:]:
-        csa = max(sa, ba + v - fee)
-        cba = max(ba, sa - v)
-        sa = csa
-        ba = cba
+    sa = 0
+    for each in arr[1:]:
+        nba = max(sa - each, ba)
+        nsa = max(ba + each - fee, sa)
+        ba = nba
+        sa = nsa
     return sa
 
 
 fee = 3
 arr = [0, 5, 7, 10, 6, 8, 12, 10, 12, 10, 13, 15]
-print(find(arr, fee))
+
+arr = [1, 3, 2, 8, 4, 9]
+fee = 2
+print(solve(arr, fee))

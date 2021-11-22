@@ -1,15 +1,7 @@
-def solve_rec(tri):
-    l = len(tri)
-
-    def find(i, j, sm):
-        if i == l or len(tri[i]) == j: return sm
-        current = tri[i][j] + sm
-        return min(find(i + 1, j, current), find(i + 1, j + 1, current))
-
-    return find(0, 0, 0)
+# https://leetcode.com/problems/triangle/
 
 
-def solve_dp(arr):
+def solve(arr):
     external_length = len(arr)
     for i in range(external_length):
         internal_length = len(arr[i])
@@ -21,9 +13,10 @@ def solve_dp(arr):
                     arr[i][j] += arr[i - 1][j - 1]
                 else:
                     arr[i][j] += min(arr[i - 1][j], arr[i - 1][j - 1])
+    print(arr)
     return min(arr[len(arr) - 1])
 
 
-tri = [[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]
-print(solve_rec(tri))
-print(solve_dp(tri))
+triangle = [[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]
+print(triangle)
+print(solve(triangle))
