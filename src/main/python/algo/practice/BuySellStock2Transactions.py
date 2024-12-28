@@ -1,5 +1,4 @@
-import sys
-
+# https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
 
 def solve(arr):
     ltr = [0]
@@ -19,7 +18,9 @@ def solve(arr):
     return max([right + left for right, left in zip(rtl, ltr)])
 
 
-arr = [30, 40, 43, 50, 45, 20, 26, 40, 80, 50, 30, 15, 10, 20, 40, 45, 71, 50, 55]
-arr = [2, 30, 15, 10, 8, 25, 80]
-arr = [90, 80, 70, 60, 50]
-print(solve(arr))
+# test cases
+
+assert solve([3, 3, 5, 0, 0, 3, 1, 4]) == 6
+assert solve([1, 2, 3, 4, 5]) == 4
+assert solve([7, 6, 4, 3, 1]) == 0
+assert solve([2, 30, 15, 10, 8, 25, 80]) == 100
